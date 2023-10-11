@@ -1,0 +1,29 @@
+
+@mixin hover-effect ($color: var(--hover-text-header)) {
+    &:hover {
+        color: $color;
+    }
+}
+
+@mixin flex-center($justify: center, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin align-items-center($align: center){
+    display: flex;
+    align-items: $align;
+}
+
+@mixin text-setting($fs: 0, $fw: 0, $color: var(--text-title-gray)) {
+    font-size: $fs;
+    font-weight: $fw;
+    color: $color;
+}
+
+@mixin css-background-img ($url, $size: cover, $repeat: no-repeat) {
+    background-image: url($url);
+    background-size: $size;
+    background-repeat: $repeat;
+}

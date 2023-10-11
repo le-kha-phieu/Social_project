@@ -1,0 +1,159 @@
+.list-blog {
+    padding: 0;
+    margin: 72.5px 101px 96px;
+
+    .title {
+        @include align-items-center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 38px;
+
+        h1 {
+            @include text-setting (50px, 700, var(--main-black));
+        }
+
+        select {
+            border-radius: 4px;
+            padding: 0px 10px;
+            height: 40px;
+            font-weight: 500;
+            }
+    }
+
+    .all-item {
+        width: 100%;
+        @include flex-center(flex-start);
+        flex-wrap: wrap;
+
+        .item-blog {
+            width: calc(33.333333333% - 20px);
+            border-radius: 8px;
+            margin: 0 20px 70px 0;
+            background: var(--main-white);
+            overflow: hidden;
+            border: 1px solid var(--border-gray);
+
+            .item-blog-img {
+                width: 100%;
+                height: 275px;
+                overflow: hidden;
+                margin-bottom: 25px;
+                cursor: pointer;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 8px 8px 0px 0px;
+                    transition: transform 0.3s;
+                }
+
+                img:hover {
+                    transform: scale(1.05);
+                }
+            }
+
+            .item-blog-content {
+                margin: 0 13px 0 20px;
+                border-radius: 0 0 6px 6px;
+
+                .info {
+                    height: 31px;
+                    margin: 0 0 15px 0;
+                    @include align-items-center;
+
+                    .author {
+                        @include align-items-center;
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                            margin-right: 4px;
+                            border-radius: 50%;
+                        }
+
+                        p {
+                            font-family: "SVN-Gilroy";
+                            height: 31px;
+                            @include text-setting (18px, 400, var(--main-black));
+                            line-height: 30px;
+                        }
+                    }
+
+                    .time {
+                        @include align-items-center;
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                            margin: 0 8px 0 21px;
+                            border-radius: 50%;
+                        }
+
+                        p {
+                            font-family: "SVN-Gilroy";
+                            height: 31px;
+                            @include text-setting (18px, 400, var(--main-black));
+                            line-height: 30px;
+                        }
+                    }
+                }
+
+                .text-detail {
+                    p {
+                        font-family: "SVN-Gilroy";
+                        margin-bottom: 29px;
+                        @include text-setting (18px, 400, var(--main-black));
+                        line-height: 25px;
+                        letter-spacing: 0em;
+                    }
+
+                    p:first-child {
+                        font-family: "SVN-Gilroy-Bold";
+                        margin-bottom: 10px;
+                        @include text-setting (20px, 700, var(--main-black));
+                        line-height: 28px;
+                    }
+                }
+
+                .text-link {
+                    button {
+                        @include align-items-center;
+                        width: 137px;
+                        height: 40px;
+                        font-family: "SVN-Gilroy";
+                        margin-bottom: 21px;
+                        border: 1px solid #E4E4E4;
+                        padding: 10px 20px 10px 15px;
+                        transition: all 0.3s linear;
+                        color: var(--text-btn-home);                      
+
+                        a {
+                            width: 76px;
+                            height: 20px;
+                            @include text-setting (14px, 400, var(--text-btn-home));
+                            line-height: 20px;
+                            margin-right: 8px;
+                        }
+
+                        i {
+                            width: 10px;
+                            height: 10px;
+                            color: var(--text-btn-home);
+                        }
+                    }
+
+                    button:hover {
+                        background-color: var(--text-btn-home);
+                        cursor: pointer;
+
+                        a, i {
+                            color: var(--main-white);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
