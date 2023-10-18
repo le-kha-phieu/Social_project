@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('content');
-            $table->string('image');
-            $table->boolean('status');
-            $table->bigInteger('user_id');
-            $table->bigInteger('category_id');
+            $table->string('title')->comment('Tiêu đề bài viết');
+            $table->string('content')->comment('Nội dung bài viết');
+            $table->string('image')->comment('Ảnh bài viết');
+            $table->boolean('status')->default(1)->comment('Trạng thái: 1| Chưa duyệt - 2| Đã duyệt');
+            $table->bigInteger('user_id')->comment('Mã người dùng');
+            $table->bigInteger('category_id')->comment('Mã danh mục');
             $table->timestamps();
         });
     }
