@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use HasFactory;
+    const STATUS_ACTIVE = 2;
+
+    const STATUS_INACTIVE = 1;
     protected $table = "users";
 
     protected $fillable = [
@@ -30,5 +33,4 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
-
 }

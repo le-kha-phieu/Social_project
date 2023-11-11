@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
-            $table->bigInteger('user_id');
-            $table->bigInteger('post_id');
+            $table->text('content')->comment('Nội dung bình luận');
+            $table->bigInteger('user_id')->comment('Mã người dùng');
+            $table->bigInteger('post_id')->comment('Mã bài viết');
             $table->timestamps();
         });
     }

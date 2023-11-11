@@ -7,19 +7,18 @@
     <title>Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/scss/app.scss'])
-    @vite(['resources/js/main.js'])
+    @vite(['resources/js/homepage.js'])
 </head>
 
 <body>
     <header id="header">
         <div class="header-form">
-            <img src="{{Vite::asset('/resources/image/img_header_home_page.jpg')}}" alt="">
+            <img src="{{ Vite::asset('/resources/image/img_header_home_page.jpg') }}" alt="">
             <div class="header-navbar">
                 <div class="header-left">
-                    <img src="{{Vite::asset('/resources/image/Logo.png')}}" alt="">
+                    <img src="{{ Vite::asset('/resources/image/Logo.png') }}" alt="">
                     <div class="search-header">
                         <input type="text" placeholder="Search blog... ">
                         <button>
@@ -31,34 +30,29 @@
                     <div class="header-tag">
                         <a href="">Top</a>
                     </div>
-                    <div class="header-account">
-                        <a href="">Login</a>
-                        <a href="">Sign up</a>
-                    </div>
-                </div>
-                <div class="header-right-login">
-                    <div class="header-tag">
-                        <a class="active" href="">Top</a>
-                        <a href="">Create</a>
-                    </div>
                     <div class="header-account-login">
-                        <a href="">My name</a>
-                        <div class="avatar">
-                            <img src="https://img1.kienthucvui.vn/uploads/2019/10/10/anh-bia-tinh-yeu-dep_105704407.jpg"
-                                alt="">
-                            <div class="connect-menu"></div>
-                            <ul>
-                                <li>
-                                    <a href="">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="">My blogs</a>
-                                </li>
-                                <li>
-                                    <a href="">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                        @if (!Auth::user())
+                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('register') }}">Sign up</a>
+                        @else
+                            <a href="">Create Blog</a>
+                            <a href="">{{ Auth::user()->user_name }}</a>
+                            <div class="avatar">
+                                <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="">
+                                <div class="connect-menu"></div>
+                                <ul>
+                                    <li>
+                                        <a href="">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="">My blogs</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('logout') }}">Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

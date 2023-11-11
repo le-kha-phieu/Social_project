@@ -49,7 +49,7 @@
                         background: none;
                         border: none;
                         position: absolute;
-                        left: 39%;
+                        left: 38%;
                         top: 46px;
     
                         i {
@@ -63,6 +63,7 @@
     
             .header-right {
                 @include align-items-center;
+                // display: none;
     
                 .header-tag {
                     height: 31px;
@@ -81,52 +82,16 @@
                     }
                 }
     
-                .header-account {
-                    a {
-                        @include text-setting (15px, 700, var(--main-black));
-                        @include hover-effect (var(--hover-text-header));
-                        line-height: 22px;
-                    }
-    
-                    a:last-child {
-                        margin-left: 32px;
-                    }
-                }
-            }
-    
-            .header-right-login {
-                @include align-items-center;
-                display: none;
-    
-                .header-tag {
-                    height: 51px;
-                    @include flex-center (flex-end, center);
-                    margin-right: 106px;
-    
-                    a.active {
-                        height: 31px;
-                        padding: 7px 11px 7px 11px;
-                        margin-right: 27px;
-                        font-weight: 500;
-                        border: 0;
-                        border-radius: 3px;
-                        outline: none;
-                        background-color: var(--hover-text-header);
-                        @include hover-effect (var(--main-white));
-                    }
-    
-                    a {
-                        @include text-setting (15px, 500, var(--main-white));
-                        @include hover-effect (var(--hover-text-header));
-                    }
-                }
-    
                 .header-account-login {
                     @include align-items-center;
     
                     a {
-                        @include text-setting (15px, 500, var(--main-white));
+                        @include text-setting (15px, 700, var(--main-black));
                         @include hover-effect (var(--hover-text-header));
+                    }
+
+                    a:first-child {
+                        margin-right: 80px;
                     }
     
                     .avatar {
@@ -167,6 +132,7 @@
     
                                 a {
                                     @include text-setting (15px, 500, var(--main-black));
+                                    margin: 0px;
                                 }
                             }
                         }
@@ -193,7 +159,6 @@
                     }
                 }
             }
-    
         }
     
     }
