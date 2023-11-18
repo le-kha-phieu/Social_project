@@ -27,7 +27,7 @@ class AuthController extends Controller
             return redirect()->route('homepage');
         }
 
-        return redirect()->route('login')->with('error', 'Email hoặc password sai. Vui lòng đăng nhập lại!');
+        return redirect()->route('login')->with('error', 'Incorrect email or password. Please sign in again!');
     }
 
     public function register(RegisterRequest $request)
@@ -43,9 +43,9 @@ class AuthController extends Controller
             $checkUserName = User::where('user_name', $data['user_name'])->first();
             $checkEmail = User::where('email', $data['email'])->first();
             if ($checkUserName)
-                $message = 'Name người dùng đã tồn tại!';
+                $message = 'User name already exists!';
             if ($checkEmail)
-                $message = 'Email người dùng đã tồn tại!';
+                $message = 'Email already exists!';
             if ($message != '') {
                 return redirect()->route('register')->with('error', $message);
             }
@@ -66,9 +66,10 @@ class AuthController extends Controller
             ];
             MailVerifyAccount::dispatch($dataSendMail);
 
-            return redirect()->route('login')->with('success', 'Bạn đã đăng ký thành công. Vui xác thực Email trước!');
+            return redirect()->route('login')
+                ->with('success', 'You have successfully registered. Please verify your Email first!');
         } catch (Exception $e) {
-            return redirect()->route('register')->with('error', 'Không thể đăng ký do lỗi hệ thống!');
+            return redirect()->route('register')->with('error', 'Unable to register due to system error!');
         }
     }
 
@@ -76,7 +77,7 @@ class AuthController extends Controller
     {
         $user = User::where('token_verify_email', $token)->first();
         if (!$user)
-            return redirect()->route('login')->with('error', 'Người dùng không tồn tại');
+            return redirect()->route('login')->with('error', 'User does not exist');
 
         if ($user->status === User::STATUS_INACTIVE) {
             $user->update([
@@ -84,14 +85,14 @@ class AuthController extends Controller
                 'status' => User::STATUS_ACTIVE
             ]);
 
-            return redirect()->route('login')->with('success', 'Email đã xác thực bạn có thể đăng nhập');
+            return redirect()->route('login')->with('success', 'Email has been verified and you can sign in');
         }
-        return redirect()->route('login')->with('error', 'Email bạn đã được xác thực trước đó');
+        return redirect()->route('login')->with('error', 'Your email has been previously authenticated');
     }
 
     public function logout()
     {
         Auth::logout();
-        return view('layouts.app');
+        return redirect()->route('homepage');
     }
 }
