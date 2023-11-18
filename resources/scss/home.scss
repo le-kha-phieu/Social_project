@@ -22,7 +22,7 @@
 
     .all-item {
         width: 100%;
-        @include flex-center(flex-start);
+        @include flex-center(flex-start ,stretch);
         flex-wrap: wrap;
 
         .item-blog {

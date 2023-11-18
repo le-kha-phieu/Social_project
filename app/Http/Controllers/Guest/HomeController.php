@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
     public function viewHome (){
-        $user = User::get();
-        return view('index');
+        $blogs = Post::with('user')->get();
+        $categories = Category::get('name');
+
+        return view('index')->with([
+            'blogs' => $blogs,
+            'categories'=> $categories
+        ]);
     }
 }
