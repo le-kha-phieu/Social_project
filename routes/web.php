@@ -31,3 +31,5 @@ Route::post('/register',[AuthController::class, 'register'])->name('post.registe
 Route::post('/login',[AuthController::class, 'login'])->name('post.login');
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('/verify/{token}', [AuthController::class, 'verifyEmail'])->name('verify.email');
+
+// Route::get('/', [HomeController::class, 'allBlogPublic'])->name('blogs.home');
