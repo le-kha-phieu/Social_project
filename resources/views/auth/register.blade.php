@@ -39,7 +39,7 @@
                 </div>
                 <div class="item-form item-avatar">
                     <p>Avatar:</p>
-                    <p id="choose-avatar-button">Choose avatar</p>
+                    <p id="chooseAvatarButton" class="choose-avatar">Choose avatar</p>
                     <input type="file" name="avatar" id="inputReAvartar">
                 </div>
                     @error('avatar')

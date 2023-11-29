@@ -12,13 +12,12 @@ class HomeController extends Controller
     {
         $blogs = Post::with('user')
             ->where('status', Post::STATUS_APPROVED)
-            ->get();
-
-        $categories = Category::get();
+            ->orderBy('created_at', 'desc') 
+            ->paginate(6);
 
         return view('index')->with([
             'blogs' => $blogs,
-            'categories' => $categories,
+            'categories' => Category::get(),
         ]);
     }
 }

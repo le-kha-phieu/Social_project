@@ -3,11 +3,12 @@
     background-color: rgba(0, 0, 0, 0.101);
 
     .dashboard {
-        @include align-items-center;
+        display: flex;
+        align-items: center;
 
         a {
             font-weight: 700;
-            color: var(--main-black);
+            color: var(--btn-gray);
 
             &:hover {
                 cursor: pointer;
@@ -20,7 +21,7 @@
         }
     }
 
-    form {
+    .form-create-blog {
         padding: 35px 35px;
         background-color: rgba(0, 0, 0, 0.081);
         border-radius: 4px;
@@ -34,7 +35,7 @@
             }
         }
 
-        select {
+        .create-blog-categories {
             width: 300px;
             height: 35px;
             margin-bottom: 15px;
@@ -42,7 +43,7 @@
             @include border-create-blog;
         }
 
-        input {
+        .create-blog-title {
             height: 35px;
             margin-top: 0px;
             margin-bottom: 10px;
@@ -56,7 +57,7 @@
         }
 
 
-        p {
+        .create-blog-image {
             width: 101px;
             margin-top: 5px;
             padding: 9px 10px;
@@ -73,29 +74,37 @@
             }
         }
 
+        .input-image-blog {
+            display: none;
+        }
 
-        #imagePreview {
+
+       .image-preview {
             width: 300px;
             height: 200px;
             overflow: hidden;
             margin-bottom: 27px;
             display: none;
             box-sizing: border-box;
-
+            &.update {
+                display: block;
+            }
             img {
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
                 display: block;
                 margin: 0 auto;
             }
         }
 
-        textarea {
+        .create-blog-content {
             padding: 20px 0px 0px 20px;
             margin-bottom: 10px;
             @include border-create-blog;
         }
 
-        button {
+        .create-blog-submit {
             width: 100px;
             height: 35px;
             margin: 20px 0px;
@@ -108,4 +117,8 @@
             }
         }
     }
+}
+
+.notify-error {
+    color: var(--main-red);
 }

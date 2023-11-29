@@ -11,11 +11,6 @@
     align-items: $align;
 }
 
-@mixin align-items-center($align: center){
-    display: flex;
-    align-items: $align;
-}
-
 @mixin text-setting($fs: 0, $fw: 0, $color: var(--text-title-gray)) {
     font-size: $fs;
     font-weight: $fw;
@@ -31,4 +26,53 @@
 @mixin border-create-blog () {
     border: 1px solid var(--border-gray);
     border-radius: 4px;
+}
+
+@mixin paginate {
+    position: relative;
+    @include flex-center;
+    li {
+        @include flex-center;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        a {
+            height: 28px;
+            font-family: "SVN-Gilroy-Bold";
+            font-style: normal;
+            font-size: 20px;
+            line-height: 28px;
+            color: #211E3B;
+        }
+    }
+    li:hover, .paginate-active {
+        border-radius: 50%;
+        background-color: #FFE4E4;
+        a {
+            color: var(--text-btn-home);
+        }
+    }
+    .arrow-paginate {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        a {
+            color: white;
+        }
+    }
+    .arrow-paginate:hover {
+        opacity: 0.8;
+        a {
+            color: white;
+        }
+    }
+    li:first-child {
+        background-color: var(--text-btn-home);
+    }
+    li:last-child {
+        background: #E5E5E5;
+    }
+    li + li {
+        margin-left: 10px;
+    }
 }

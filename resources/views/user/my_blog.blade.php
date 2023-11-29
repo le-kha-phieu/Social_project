@@ -7,7 +7,7 @@
             <select id="categorySelect" name="category_id">
                 <option value="{{ route('homepage') }}">Categories</option>
                 @foreach ($categories as $category)
-                    <option value="{{ route('search.blog', ['id' => $category->id]) }}"
+                    <option value="{{ route('search.myBlog', ['id' => $category->id]) }}"
                         @if (request()->id == $category->id) selected @endif
                     >
                         {{ $category->name }}

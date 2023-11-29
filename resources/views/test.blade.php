@@ -1,54 +1,29 @@
 @vite(['resources/scss/app.scss'])
-<style>
-    .avatar {
-        margin-left: 17px;
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+            const closeButton=document.getElementById("closeButton");
+            const notification=document.querySelector(".notify-create-blog-error");
 
-        img {
-            width: 27px;
-            height: 27px;
-            border-radius: 50%;
-        }
+            // Check if the elements exist on the page
+            if (closeButton && notification) {
 
-        .connect-menu {
-            border: 15px solid;
-            border-color: transparent transparent var(--main-white) transparent;
-            position: absolute;
-            top: 50%;
-            right: 101px;
-            display: none;
-        }
-
-        ul {
-            min-width: 90px;
-            position: absolute;
-            top: 62%;
-            right: 100px;
-            z-index: 3;
-            margin-top: 12px;
-            background-color: var(--main-white);
-            border-radius: 5px;
-            overflow: hidden;
-            display: none;
-
-            li {
-                width: 100%;
-                text-align: center;
-                margin: 5px 0;
-                padding: 0 10px;
-
+                // Add a click event listener to the close button
+                closeButton.addEventListener("click", function () {
+                        // Hide the notification
+                        notification.style.display = "none";
+                    });
             }
-        }
-
-    }
-</style>
-@if (Auth::user())
-    <p>{{ Auth::user()->user_name }}</p>
-    <div class="avatar">
-        <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="">
-        <div class="connect-menu"></div>
+        });
+</script>
+<div class="notify-create-blog-error">
+    <div class="notify-icon">
+        <i class="fa-solid fa-circle-exclamation"></i>
     </div>
-    <a href="{{ route('logout') }}">Logout here</a>
-@else
-    <a href="{{ route('login') }}">Login here</a>
-    <a href="{{ route('register') }}">Register here</a>
-@endif
+    <div class="notify-body">
+        <h3>Error</h3>
+        <p>Your blog could not be created due to a system error. Please try again later!</p>
+    </div>
+    <div class="notify-close">
+        <span id="closeButton">o</span>
+    </div>
+</div>
