@@ -17,6 +17,8 @@ class Category extends Seeder
             ['name' => 'Music'],
             ['name' => 'Sport'],
             ['name' => 'Love'],
+            ['name' => 'Cook'],
+            ['name' => 'Confide'],
         ]);
     }
 }

@@ -10,7 +10,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/scss/app.scss'])
     @vite(['resources/js/homepage.js'])
-    @vite(['resources/js/blog.js'])
 </head>
 
 <body>
@@ -22,10 +21,17 @@
                         <img src="{{ Vite::asset('/resources/image/Logo.png') }}" alt="">
                     </a>
                     <div class="search-header">
-                        <input type="text" placeholder="Search blog... ">
+                        @if (Route::is('homepage'))
+                            <form action="{{ route('search.blog') }}" method="GET">
+                        @else
+                            <form action="{{ route('search.myBlog') }}" method="GET">
+                        @endif
+                        <input type="text" name="data" value="{{ request('data') }}"
+                            placeholder="Search blog... ">
                         <button>
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
+                        </form>
                     </div>
                 </div>
                 <div class="header-right">
@@ -44,10 +50,13 @@
                                 <div class="connect-menu"></div>
                                 <ul>
                                     <li>
-                                        <a href="">Profile</a>
+                                        <a href="{{ route('profile.user') }}">Profile</a>
                                     </li>
                                     <li>
-                                        <a href="">My blogs</a>
+                                        <a href="{{ route('myBlog') }}">My blogs</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Change password</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}">Logout</a>
@@ -60,33 +69,62 @@
             </div>
         </div>
     </header>
-    @if (session('message') === 'success')
-        <div class="notify-create-blog-success">
-            <div class="notify-icon">
-                <i class="fa-solid fa-circle-check"></i>
+    <div id="notifyBlog">
+        @if (session('message') === 'successcreateblog')
+            <div class="notify-create-blog-success">
+                <div class="notify-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="notify-body">
+                    <h3>Success</h3>
+                    <p>You have successfully created your blog, please wait for approval.</p>
+                </div>
+                <div class="notify-close">
+                    <i class="fa-solid fa-xmark" id="closeButton"></i>
+                </div>
             </div>
-            <div class="notify-body">
-                <h3>Success</h3>
-                <p>You have successfully created your blog, please wait for approval.</p>
+        @elseif(session('message') === 'errorcreateblog')
+            <div class="notify-create-blog-error">
+                <div class="notify-icon">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div class="notify-body">
+                    <h3>Error</h3>
+                    <p>Your blog could not be created due to a system error. Please try again later!</p>
+                </div>
+                <div class="notify-close">
+                    <i class="fa-solid fa-xmark" id="closeButton"></i>
+                </div>
             </div>
-            <div class="notify-close">
-                <i class="fa-solid fa-xmark"></i>
+        @endif
+        @if (session('message') === 'successdelete')
+            <div class="notify-delete-blog-success">
+                <div class="notify-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="notify-body">
+                    <h3>Success</h3>
+                    <p>Your blog has been successfully deleted.</p>
+                </div>
+                <div class="notify-close">
+                    <i class="fa-solid fa-xmark" id="closeButton"></i>
+                </div>
             </div>
-        </div>
-    @elseif(session('message') === 'error')
-        <div class="notify-create-blog-error">
-            <div class="notify-icon">
-                <i class="fa-solid fa-circle-exclamation"></i>
+        @elseif(session('message') === 'errordelete')
+            <div class="notify-delete-blog-error">
+                <div class="notify-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="notify-body">
+                    <h3>Error</h3>
+                    <p>Your blog could not be deleted due to a system error.</p>
+                </div>
+                <div class="notify-close">
+                    <i class="fa-solid fa-xmark" id="closeButton"></i>
+                </div>
             </div>
-            <div class="notify-body">
-                <h3>Error</h3>
-                <p>Your blog could not be created due to a system error. Please try again later!</p>
-            </div>
-            <div class="notify-close">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
-        </div>
-    @endif
+        @endif
+    </div>
     @yield('body')
     <footer>
         <div class="footer-form">

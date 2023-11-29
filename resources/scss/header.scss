@@ -15,7 +15,8 @@
             .header-left {
                 width: 558px;
                 height: 61px;
-                @include align-items-center;
+                display: flex;
+                align-items: center;
 
                 img {
                     width: 110px;
@@ -29,8 +30,8 @@
 
                     input {
                         height: 51px;
-                        width: 100%;
-                        padding: 14px 13px 13px 20px;
+                        width: 365px;
+                        padding: 14px 38px 16px 20px;
                         border-radius: 4px;
                         border: 1px solid var(--border-gray);
                         font-size: 16px;
@@ -53,7 +54,8 @@
             }
 
             .header-right {
-                @include align-items-center;
+                display: flex;
+                align-items: center;
 
                 .header-tag {
                     height: 31px;
@@ -73,7 +75,8 @@
                 }
 
                 .header-account-login {
-                    @include align-items-center;
+                    display: flex;
+                    align-items: center;
 
                     a {
                         @include text-setting (15px, 700, var(--main-black));

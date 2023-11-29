@@ -23,9 +23,9 @@ class BlogRequest extends FormRequest
     {
         return [
             'category_id' => 'required',
-            'title' => 'required|min:5|max:255',
+            'title' => 'required|min:'.config('length.min_string').'|max:'.config('length.max_string'),
             'image' => 'required',
-            'content' => 'required|min:5|max:255'
+            'content' => 'required|min:'.config('length.min_string').'|max:'.config('length.max_string')
         ];
     }
 }
