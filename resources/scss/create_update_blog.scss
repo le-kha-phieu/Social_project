@@ -1,0 +1,124 @@
+.layout_create {
+    padding: 150px 50px 50px 50px;
+    background-color: rgba(0, 0, 0, 0.101);
+
+    .dashboard {
+        display: flex;
+        align-items: center;
+
+        a {
+            font-weight: 700;
+            color: var(--btn-gray);
+
+            &:hover {
+                cursor: pointer;
+                color: var(--hover-text-header);
+            }
+        }
+
+        i {
+            padding: 0px 4px;
+        }
+    }
+
+    .form-create-blog {
+        padding: 35px 35px;
+        background-color: rgba(0, 0, 0, 0.081);
+        border-radius: 4px;
+        display: grid;
+
+        label {
+            padding: 8px 0px;
+
+            span {
+                color: var(--text-btn-home)
+            }
+        }
+
+        .create-blog-categories {
+            width: 300px;
+            height: 35px;
+            margin-bottom: 15px;
+            padding: 0px 5px;
+            @include border-create-blog;
+        }
+
+        .create-blog-title {
+            height: 35px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            padding: 0px 10px;
+            @include border-create-blog;
+
+            &::placeholder {
+                color: var(--text-title-gray);
+                font-size: 0.8rem;
+            }
+        }
+
+
+        .create-blog-image {
+            width: 101px;
+            margin-top: 5px;
+            padding: 9px 10px;
+            font-size: 0.8rem;
+            @include border-create-blog;
+            background-color: var(--main-white);
+            color: var(--text-title-gray);
+            box-sizing: border-box;
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--hover-text-header);
+                color: var(--main-white);
+            }
+        }
+
+        .input-image-blog {
+            display: none;
+        }
+
+
+       .image-preview {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            margin-bottom: 27px;
+            display: none;
+            box-sizing: border-box;
+            &.update {
+                display: block;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .create-blog-content {
+            padding: 20px 0px 0px 20px;
+            margin-bottom: 10px;
+            @include border-create-blog;
+        }
+
+        .create-blog-submit {
+            width: 100px;
+            height: 35px;
+            margin: 20px 0px;
+            @include border-create-blog;
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--hover-text-header);
+                color: var(--main-white);
+            }
+        }
+    }
+}
+
+.notify-error {
+    color: var(--main-red);
+}

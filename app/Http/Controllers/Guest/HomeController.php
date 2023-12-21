@@ -8,13 +8,16 @@ use App\Models\Category;
 
 class HomeController extends Controller
 {
-    public function viewHome (){
-        $blogs = Post::with('user')->get();
-        $categories = Category::get('name');
+    public function viewHome()
+    {
+        $blogs = Post::with('user')
+            ->where('status', Post::STATUS_APPROVED)
+            ->orderBy('created_at', 'desc') 
+            ->paginate(6);
 
         return view('index')->with([
             'blogs' => $blogs,
-            'categories'=> $categories
+            'categories' => Category::get(),
         ]);
     }
 }
